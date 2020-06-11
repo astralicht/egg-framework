@@ -1,0 +1,84 @@
+<?php
+
+/* Set the value to 1 if you want error messages to show up on the terminal. */
+error_reporting(0);
+
+if(isset($argv[1])) {
+	$args = explode(":", $argv[1]);
+
+	switch($args[0]) {
+		case "g":
+		case "generate":
+			switch($args[1]) {
+				case "controller":
+					if(!isset($argv[2])) {
+						echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m --> Provide new controller with name.\n\n";
+					}
+					else {
+						$controllerName = $argv[2];
+						$controllerClassName = $controllerName;
+						$controllerClassName[0] = strtoupper($controllerClassName[0]);
+						if(filesize("php/controllers/".$controllerName."Controller.php") != 0) {
+							echo "\n\033[43m Yolk \033[0m\033[0;31m Error\033[0m --> Controller already exists.\n\n";
+							die();
+						}
+						$controller = fopen("php/controllers/".$controllerName."Controller.php", "w");
+						$controllerContents = "<?php
+
+include_once 'Controller.php';
+
+use Controller\Controller;
+
+class $controllerClassName {
+
+	public function index() {
+		return Controller::view('$controllerName/index');
+	}
+
+}";
+						fwrite($controller, $controllerContents);
+						fclose($controller);
+
+						$viewFolderName = $argv[2];
+						mkdir("resources/views/".$viewFolderName);
+						$view = fopen("resources/views/".$viewFolderName."/index.html", "w");
+						$viewContents = '<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> $controllerName Index </title>
+	<link rel="stylesheet" href="resources/assets/css/shell.css">
+</head>
+<body main-layer screen-height screen-width centered>
+	<header big bold> $controllerName Index </header>
+</body>
+</html>
+';
+						fwrite($view, $viewContents);
+						fclose($view);
+
+						$file = fopen("routes.php", "a");
+						fwrite($file, "\n".'$ROUTE["'.$viewFolderName.'/index/"] = "'.$viewFolderName.'/index";');
+						fclose($file);
+
+						$file = fopen("config.php", "a");
+						fwrite($file, "\ninclude_once 'php/controllers/".$controllerName."Controller.php';");
+						fwrite($file, "\nuse php\controllers\\".$controllerClassName.";");
+
+						echo "\n\033[33m Chalaza \033[0m\033[1;32m Success\033[0m --> Created $controllerName controller, view, and route.\n\n";
+					}
+					break;
+				default:
+					echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m --> Invalid argument entered. Cannot generate unknown file type.\n\n";
+					break;
+			}
+			break;
+		default:
+			echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m --> Invalid argument entered.\n\n";
+			break;
+	}
+}
+else{
+	echo "\n\033[33m Chalaza \033[0m v1.0";
+	echo "\nby Julac Ontina\n\n";
+}
