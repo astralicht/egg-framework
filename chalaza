@@ -47,7 +47,7 @@ class $controllerClassName {
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title> '.$controllerName.' Index </title>
-	<link rel="stylesheet" href="resources/assets/css/shell.css">
+	<link rel="stylesheet" href="../resources/assets/css/shell.css">
 </head>
 <body main-layer screen-height screen-width centered>
 	<header big bold> '.$controllerName.' Index </header>
