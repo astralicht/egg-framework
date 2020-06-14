@@ -149,13 +149,13 @@ input[type=date] {
 	padding: 10px 15px;
 }
 :-ms-input-placeholder {
-	color: white;
+	color: #666;
 }
 ::-ms-input-placeholder {
-	color: white;
+	color: #666;
 }
 ::placeholder {
-	color: white;
+	color: #666;
 }
 /*   */
 /* Grid CSS */
