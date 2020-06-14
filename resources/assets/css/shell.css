@@ -3,6 +3,7 @@
 	font-family: "Heebo", sans-serif;
 	font-size: 14px;
 	color: #222;
+	box-sizing: border-box;
 }
 [big] {
 	font-size: 30px;
@@ -15,9 +16,6 @@
 }
 [italic] {
 	font-style: italic;
-}
-[main-layer] {
-	display: 0;
 }
 /* Can only be used when display flex is applied to an element */
 [v-center] {
@@ -62,6 +60,7 @@
 	width: 100vw;
 }
 [centered] {
+	width: 100vw;
 	height: 100vh;
 	display: flex;
 	align-items: center;
@@ -112,7 +111,6 @@ form {
 	padding: 0px 20px;
 	width: 400px;
 	display: block;
-	box-sizing: border-box;
 }
 form-title {
 	margin: 10px 0px;
@@ -122,7 +120,6 @@ form-title {
 }
 form-group input, form-group button {
 	width: 100%;
-	box-sizing: border-box;
 	display: block;
 }
 form-group {
@@ -141,7 +138,6 @@ input {
 	caret-color: rgb(252, 186, 3);
 	margin: 10px 0px;
 	display: block;
-	box-sizing: border-box;
 }
 input[type=text] {
 	padding: 10px 15px;
@@ -185,7 +181,6 @@ notification-banner {
 	padding: 20px 30px;
 	margin: 20px;
 	outline-offset: -1px;
-	box-sizing: border-box;
 	box-shadow: 0px 6px 6px -6px rgba(0, 0, 0, .3);
 	width: 500px;
 	display: block;
