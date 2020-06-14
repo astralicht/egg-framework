@@ -49,7 +49,7 @@ class $controllerClassName {
 	<title> '.$controllerName.' Index </title>
 	<link rel="stylesheet" href="../resources/assets/css/shell.css">
 </head>
-<body main-layer screen-height screen-width centered>
+<body centered>
 	<header big bold> '.$controllerName.' Index </header>
 </body>
 </html>
