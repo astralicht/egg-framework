@@ -64,6 +64,7 @@ class $controllerClassName {
 						$file = fopen("config.php", "a");
 						fwrite($file, "\ninclude_once 'php/controllers/".$controllerName."Controller.php';");
 						fwrite($file, "\nuse php\controllers\\".$controllerClassName.";");
+						fclose($file);
 
 						echo "\n\033[33m Chalaza \033[0m\033[1;32m Success\033[0m --> Created $controllerName controller, view, and route.\n\n";
 					}
