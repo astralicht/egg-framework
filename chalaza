@@ -68,6 +68,11 @@ class $controllerClassName {
 						echo "\n\033[33m Chalaza \033[0m\033[1;32m Success\033[0m --> Created $controllerName controller, view, and route.\n\n";
 					}
 					break;
+				case "function":
+					// insert code here for function creation using CLI
+
+					echo $argv[2];
+					break;
 				default:
 					echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m --> Invalid argument entered. Cannot generate unknown file type.\n\n";
 					break;
