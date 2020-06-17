@@ -5,6 +5,7 @@ namespace Controller;
 include 'config.php';
 
 class Controller {
+	
 	public function view($view_path) {
 		return 'resources/views/'.$view_path.'.html';
 	}
@@ -16,4 +17,5 @@ class Controller {
 	public function with_value($value_name, $value) {
 		$_SESSION[$value_name] = $value;
 	}
+	
 }
