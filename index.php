@@ -36,10 +36,10 @@ if($CONFIG['environment'] == "local"){
 		}
 	}
 }
-else if($CONFIG['environment'] == "live"){
+else if($CONFIG['environment'] == "production"){
 	$URI = explode("/", $_SERVER['REQUEST_URI']);
 	if($URI[2] == "") {
-		$route = $ROUTE['default'];
+		$route = $ROUTE['/'];
 		$route = explode("/", $route);
 		$route[0][0] = strtoupper($route[0][0]);
 		$controller = $route[0];
