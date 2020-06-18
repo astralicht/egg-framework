@@ -70,11 +70,10 @@ class $controllerClassName {
 					}
 					break;
 				case "function":
-					/* insert code here for function creation using CLI */
 					$file = fopen("php/controllers/".$argv[2]."Controller.php", "r+");
 					fseek($file, -1, SEEK_END);
 					fwrite($file, "\tpublic function ".$argv[3]."(");
-					for($i=3; $i < count($argv); $i++) {
+					for($i=4; $i < count($argv); $i++) {
 						if($i < count($argv)-1) {
 							fwrite($file, "$".$argv[$i].", ");
 						}
