@@ -1,7 +1,7 @@
 <?php
 
 /* Set the value to 1 if you want error messages to show up on the terminal. */
-error_reporting(0);
+
 
 if(isset($argv[1])) {
 	$args = explode(":", $argv[1]);
@@ -70,9 +70,20 @@ class $controllerClassName {
 					}
 					break;
 				case "function":
-					// insert code here for function creation using CLI
-
-					echo $argv[2];
+					/* insert code here for function creation using CLI */
+					$file = fopen("php/controllers/".$argv[2]."Controller.php", "r+");
+					fseek($file, -1, SEEK_END);
+					fwrite($file, "\tpublic function ".$argv[3]."(");
+					for($i=3; $i < count($argv); $i++) {
+						if($i < count($argv)-1) {
+							fwrite($file, "$".$argv[$i].", ");
+						}
+						else {
+							fwrite($file, "$".$argv[$i]);
+						}
+					}
+					fwrite($file, ") {\n\t\t/* Insert function code here */\n\t}\n\n}");
+					fseek($file, 0, SEEK_END);
 					break;
 				default:
 					echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m --> Invalid argument entered. Cannot generate unknown file type.\n\n";
