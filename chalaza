@@ -1,7 +1,7 @@
 <?php
 
-/* Set the value to 1 if you want error messages to show up on the terminal. */
-
+/* Turn line below into a comment to disable PHP error reporting. */
+error_reporting(0);
 
 if(isset($argv[1])) {
 	$args = explode(":", $argv[1]);
@@ -12,14 +12,14 @@ if(isset($argv[1])) {
 			switch($args[1]) {
 				case "controller":
 					if(!isset($argv[2])) {
-						echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m --> Provide new controller with name.\n\n";
+						echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> Provide new controller with name.\n\n";
 					}
 					else {
 						$controllerName = $argv[2];
 						$controllerClassName = $controllerName;
 						$controllerClassName[0] = strtoupper($controllerClassName[0]);
 						if(filesize("php/controllers/".$controllerName."Controller.php") != 0) {
-							echo "\n\033[43m Yolk \033[0m\033[0;31m Error\033[0m --> Controller already exists.\n\n";
+							echo "\n\033[43m Yolk \033[0m\033[0;31m Error\033[0m >> Controller already exists.\n\n";
 							die();
 						}
 						$controller = fopen("php/controllers/".$controllerName."Controller.php", "w");
@@ -66,31 +66,46 @@ class $controllerClassName {
 						fwrite($file, "\nuse php\controllers\\".$controllerClassName.";");
 						fclose($file);
 
-						echo "\n\033[33m Chalaza \033[0m\033[1;32m Success\033[0m --> Created $controllerName controller, view, and route.\n\n";
+						echo "\n\033[33m Chalaza \033[0m\033[1;32m Success\033[0m >> Created $controllerName controller, view, and route.\n\n";
 					}
 					break;
 				case "function":
-					$file = fopen("php/controllers/".$argv[2]."Controller.php", "r+");
-					fseek($file, -1, SEEK_END);
-					fwrite($file, "\tpublic function ".$argv[3]."(");
-					for($i=4; $i < count($argv); $i++) {
-						if($i < count($argv)-1) {
-							fwrite($file, "$".$argv[$i].", ");
+					if($argv[2] != null) {
+						$file_path = "php/controllers/".$argv[2]."Controller.php";
+						if(file_exists($file_path)) {
+							$file = fopen($file_path, "r+");
 						}
 						else {
-							fwrite($file, "$".$argv[$i]);
+							echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> ".$argv[2]."Controller does not exist.\n\n";
+							break;
 						}
+						fseek($file, -1, SEEK_END);
+						fwrite($file, "\tpublic function ".$argv[3]."(");
+						for($i=4; $i < count($argv); $i++) {
+							if($i < count($argv)-1) {
+								fwrite($file, "$".$argv[$i].", ");
+							}
+							else {
+								fwrite($file, "$".$argv[$i]);
+							}
+						}
+						fwrite($file, ") {\n\t\t/* Insert function code here */\n\t}\n\n}");
+						fseek($file, 0, SEEK_END);
 					}
-					fwrite($file, ") {\n\t\t/* Insert function code here */\n\t}\n\n}");
-					fseek($file, 0, SEEK_END);
+					else {
+						echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> Controller name argument is blank.\n\n";
+					}
+					break;
+				case "project":
+					/* Insert code here for project type download (clone from git repo). */
 					break;
 				default:
-					echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m --> Invalid argument entered. Cannot generate unknown file type.\n\n";
+					echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> Invalid argument entered. Unknown argument or not included.\n\n";
 					break;
 			}
 			break;
 		default:
-			echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m --> Invalid argument entered.\n\n";
+			echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> Invalid argument entered.\n\n";
 			break;
 	}
 }
