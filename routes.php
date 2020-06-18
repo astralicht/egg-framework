@@ -6,7 +6,7 @@
 * 
 *	$ROUTE['uri/'] = 'controller/function';
 *	
-*	To set default route, use $ROUTE['default']
+*	To set default route, use $ROUTE['/']
 *
 **/
 

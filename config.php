@@ -2,7 +2,7 @@
 
 /**
 *
-*	environment can either be local or production
+*	Environment can either be local or production
 *
 **/
 
