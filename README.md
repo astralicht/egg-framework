@@ -6,7 +6,7 @@ This framework is based on the Controller-Domain-Repository-Service (CDRS) frame
 It is meant to replace Softboiled-MVC as the Model-Controller-View (MVC) was found able to be further separated into more parts increasing clarity and modularity in the systems developed with the CDRS framework.
 
 ## Other frameworks built in:
-* [Shell CSS](https://github.com/eneioarzew/shell-css)
+* [Shell CSS](https://github.com/eneioarzew/shell-framework)
 
 ## Framework notes:
 URI length (in a local environment) is usually up to 4 when URI array in root index file is counted with PHP count() function. In the event that the URI needs to exceed 4, I recommend the following solutions:
