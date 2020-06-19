@@ -5,17 +5,37 @@
 	color: #222;
 	box-sizing: border-box;
 }
-[big] {
-	font-size: 30px;
+body {
+	margin: 0;
 }
-[huge] {
-	font-size: 50px;
+hr {
+	border: none;
+	border-bottom: 1px solid #AAA;
+	width: 90%;
+}
+[standard-margin] {
+	margin: 10px 20px;
+}
+[medium] {
+	font-size: 20px;
+}
+[large] {
+	font-size: 35px;
+}
+[extra-large] {
+	font-size: 60px;
+}
+[extra-extra-large] {
+	font-size: 85px;
 }
 [bold] {
 	font-weight: bold;
 }
 [italic] {
 	font-style: italic;
+}
+[oblique] {
+	font-style: oblique;
 }
 /* Can only be used when display flex is applied to an element */
 [v-center] {
@@ -31,6 +51,7 @@
 	align-items: flex-end;
 }
 /*   */
+/* Absolute Hover */
 [hover] {
 	position: absolute;
 	margin: 0;
@@ -47,6 +68,8 @@
 [hover-left] {
 	left: 20px;
 }
+/*   */
+/* Full Dimensions */
 [full-height] {
 	height: 100%;
 }
@@ -59,6 +82,7 @@
 [screen-width] {
 	width: 100vw;
 }
+/*   */
 [centered] {
 	width: 100vw;
 	height: 100vh;
@@ -78,16 +102,8 @@
 [bad] {
 	background-color: rgb(252, 186, 3);
 }
-[really-bad] {
+[danger] {
 	background-color: rgb(240, 97, 58);
-}
-body {
-	margin: 0;
-}
-hr {
-	border: none;
-	border-bottom: 1px solid #AAA;
-	width: 90%;
 }
 [button] {
 	padding: 15px 30px;
@@ -132,12 +148,14 @@ input-title {
 	display: block;
 }
 input {
-	border: none;
-	box-shadow: 0px 6px 6px -6px rgba(0, 0, 0, .3);
-	outline: none;
-	caret-color: rgb(252, 186, 3);
-	margin: 10px 0px;
-	display: block;
+    box-shadow: none;
+    border: 1px solid #666;
+    border-radius: 5px;
+    width: 100%;
+    transition: box-shadow .2s;
+}
+input:focus {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, .1);
 }
 input[type=text] {
 	padding: 10px 15px;
@@ -166,13 +184,10 @@ row {
 column {
 	display: block;
 }
-[flex]{
-	display: flex;
-}
 /*   */
 /* Header CSS */
 header{
-	margin: 20px;
+	margin: 10px 20px;
 	display: block;
 }
 /*   */
