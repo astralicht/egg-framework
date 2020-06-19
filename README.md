@@ -1,7 +1,6 @@
 
-==============================================
-       Egg Stack by Julac Ontina
-==============================================
+# Egg Stack
+## by Julac Ontina
 
 This framework is based on the Controller-Domain-Repository-Service (CDRS) framework or structure found in Java Spring Boot.
 It is meant to replace Softboiled-MVC as the Model-Controller-View (MVC) was found able to be further separated into more parts increasing clarity and modularity in the systems developed with the CDRS framework.
