@@ -37,6 +37,9 @@ hr {
 [oblique] {
 	font-style: oblique;
 }
+[auto-margin] {
+	margin: auto;
+}
 /* Can only be used when display flex is applied to an element */
 [v-center] {
 	align-items: center;
@@ -334,6 +337,9 @@ screen {
 /*   */
 /* Responsive CSS */
 @media only screen and (max-width: 500px) {
+	row {
+		width: 100%;
+	}
 	column {
 		width: 100%;
 	}
