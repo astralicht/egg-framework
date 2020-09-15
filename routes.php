@@ -11,4 +11,3 @@
 **/
 
 $ROUTE["/"] = "welcome/index";
-$ROUTE["welcome/index/"] = "welcome/index";

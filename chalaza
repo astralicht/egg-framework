@@ -47,14 +47,25 @@ class $controllerClassName {
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title> '.$controllerName.' Index </title>
-	<link rel="stylesheet" href="../resources/assets/css/shell.css">
+	<link rel="stylesheet" href="../global.css">
+	<link rel="stylesheet" href="index.css">
 </head>
-<body centered>
-	<header large bold> '.$controllerName.' Index </header>
+<body>
+	<h1> '.$controllerName.' Index </h1>
+
+	<script src="index.js"></script>
 </body>
 </html>
 ';
 						fwrite($view, $viewContents);
+						fclose($view);
+
+						$view = fopen("modules/".$viewFolderName."/index.css", "w");
+						fwrite($view, "/* Enter css here");
+						fclose($view);
+
+						$view = fopen("modules/".$viewFolderName."/index.js", "w");
+						fwrite($view, "// Enter js here");
 						fclose($view);
 
 						$file = fopen("routes.php", "a");
