@@ -40,8 +40,8 @@ class $controllerClassName {
 						fclose($controller);
 
 						$viewFolderName = $argv[2];
-						mkdir("resources/views/".$viewFolderName);
-						$view = fopen("resources/views/".$viewFolderName."/index.html", "w");
+						mkdir("modules/".$viewFolderName);
+						$view = fopen("modules/".$viewFolderName."/index.html", "w");
 						$viewContents = '<!DOCTYPE html>
 <html>
 <head>
