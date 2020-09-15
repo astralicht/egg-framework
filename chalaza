@@ -50,7 +50,7 @@ class $controllerClassName {
 	<link rel="stylesheet" href="../resources/assets/css/shell.css">
 </head>
 <body centered>
-	<header big bold> '.$controllerName.' Index </header>
+	<header large bold> '.$controllerName.' Index </header>
 </body>
 </html>
 ';
