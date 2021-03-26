@@ -10,4 +10,5 @@
 *
 **/
 
-$ROUTE["/"] = "welcome/index";
+$ROUTE["/"] = "home/index";
+$ROUTE["home/index"] = "home/index";

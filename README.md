@@ -13,12 +13,14 @@ The reason for the suggestions is that the framework does not support URI length
 
 ==> Commands available:
 	(Every command must be preceeded by "php chalaza")
-	--> Generate commands can be shortened to g:[module-type]
+	--> Generate commands can be shortened to g:[argument]
 	--> generate:controller [controller-name]
 		-> Generates a controller in php/controllers, a view in resources/view, include_once and use lines in the config file, and the necessary lines in the routes file.
 		-> (e.g. g:controller employees)
 	--> generate:function [controller-name] [function-name] [argument-1] [argument-2]...[argument-n]
-		-> Generates a function with the name specified in the target controller.
+		-> Generates a function with the name specified.
 		-> Includes all specified arguments for the function.
 		-> Argument names are separated by spaces in the command.
 		-> (e.g. g:function employees searchEmployee employee_id auth_id)
+	--> generate:route [module-name] [function-name]
+		-> Generates a route with the name specified.

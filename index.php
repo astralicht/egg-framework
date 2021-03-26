@@ -3,73 +3,52 @@
 include_once 'config.php';
 include_once 'routes.php';
 
-if($CONFIG['environment'] == "local"){
-	$URI = explode("/", $_SERVER['REQUEST_URI']);
-	if($URI[2] == "") {
+$original_URI = $_SERVER['REQUEST_URI'];
+$exploded_URI = explode("/", $original_URI);
+
+if($ENVIRONMENT === "LOCAL"){
+	$temp = array_shift($exploded_URI);
+	$temp = array_shift($exploded_URI);
+	$final_URI = implode("/", $exploded_URI);
+	$URI_length = 0;
+
+	if(implode("", $exploded_URI) !== "") {
+		$URI_length = count($exploded_URI);
+	}
+
+	if($URI_length === 0) {
 		$route = $ROUTE['/'];
-		$route = explode("/", $route);
-		$route[0][0] = strtoupper($route[0][0]);
+		$route = explode('/', $route);
 		$controller = $route[0];
 		$function = $route[1];
-		if(null !== $controller::$function()){
-			include_once $controller::$function();
-		}
-	}
-	else if(count($URI) == 4) {
-		$uri = "";
-		for($count = 2; $count < count($URI); $count++) {
-			$uri .= $URI[$count].'/';
-		}
 
-		if(isset($ROUTE[$uri])) {
-			$route = explode("/", $ROUTE[$uri]);
-			$route[0][0] = strtoupper($route[0][0]);
-			$controller = $route[0];
-			$function = $route[1];
-			if(null !== $controller::$function()){
-				include_once $controller::$function();
+		header("Location: $controller/$function");
+	}
+	else {
+		if(isset($ROUTE[$final_URI])) {
+			$controller = $exploded_URI[0];
+			$function = $exploded_URI[1];
+
+			$controller[0] = strtoupper($controller[0]);
+			$controller .= "Controller";
+
+			$instance = new $controller();
+			$response = $instance->$function();
+
+			if($response !== null) {
+				include_once $response;
 			}
 		}
 		else {
 			showErrorPage();
-			die();
 		}
 	}
 }
-else if($CONFIG['environment'] == "production"){
-	$URI = explode("/", $_SERVER['REQUEST_URI']);
-	if($URI[2] == "") {
-		$route = $ROUTE['/'];
-		$route = explode("/", $route);
-		$route[0][0] = strtoupper($route[0][0]);
-		$controller = $route[0];
-		$function = $route[1];
-		if(null !== $controller::$function()){
-			include_once $controller::$function();
-		}
-	}
-	else if(count($URI) == 3) {
-		$uri = "";
-		for($count = 1; $count < count($URI); $count++) {
-			$uri .= $URI[$count].'/';
-		}
-
-		if(isset($ROUTE[$uri])) {
-			$route = explode("/", $ROUTE[$uri]);
-			$route[0][0] = strtoupper($route[0][0]);
-			$controller = $route[0];
-			$function = $route[1];
-			if(null !== $controller::$function()){
-				include_once $controller::$function();
-			}
-		}
-		else {
-			showErrorPage();
-			die();
-		}
-	}
+else if($ENVIRONMENT === "PRODUCTION") {
+	// enter code here
 }
 
 function showErrorPage() {
-	include_once Error404::index();
+	include_once Error404Controller::index();
+	die;
 }

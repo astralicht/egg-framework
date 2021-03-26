@@ -1,10 +1,10 @@
 <?php
 
-class Error404Controller {
+class HomeController {
 
 	public function index() {
 		$controller = new Controller();
-		return $controller->view('error404/index');
+		return $controller->view('home/index');
 	}
 
 }
