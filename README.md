@@ -1,9 +1,7 @@
 
 # Egg Stack
-**by Julac Ontina**
-
-Egg Stack 
-It is meant to replace Softboiled-MVC as the Model-Controller-View (MVC) was found able to be further separated into more parts increasing clarity and modularity in the systems developed with the CDRS framework.
+*A lightweight PHP framework for quick project creation.*
+*by Julac Ontina*
 
 **Commands available:** *(Every command must be preceeded by "php chalaza")*
 **Generate single** *Generate commands can be shortened to g:[module-type]*
