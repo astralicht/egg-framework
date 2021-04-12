@@ -3,6 +3,10 @@
 *A lightweight PHP framework for quick project creation.*
 *by Julac Ontina*
 
+# Installation
+**Install using Composer**
+```composer create-project eneioarzew/egg-framework [version|leave blank to default to latest stable version]```
+
 **Commands available:** *(Every command must be preceeded by "php chalaza")*
 **Generate single** *Generate commands can be shortened to g:[module-type]*
 * **generate:controller** *[controller-name]*
