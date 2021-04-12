@@ -262,7 +262,7 @@ if(isset($argv[1])) {
 					generateService($argv);
 					break;
 				case "r":
-				case "repository":
+				case "repo":
 					generateRepository($argv);
 					break;
 				case "d":
