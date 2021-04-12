@@ -1,5 +1,5 @@
 {
-    "name": "eneioarzew/egg-stack",
+    "name": "eneioarzew/egg-framework",
     "description": "A simple PHP framework with CLI functionality.",
     "keywords": ["php", "cli", "simple", "framework", "lightweight"],
     "type": "project",
