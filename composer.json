@@ -11,6 +11,12 @@
             "email": "julac.ontina@gmail.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/eneioarzew/egg-framework"
+        }
+    ],
     "minimum-stability": "beta-1.0",
     "require": {
         "php": ">=7.1.0"
