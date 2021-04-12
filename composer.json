@@ -1,22 +1,17 @@
 {
     "name": "eneioarzew/egg-stack",
     "description": "A simple PHP framework with CLI functionality.",
-    "keywords": [
-        "php",
-        "cli",
-        "simple",
-        "framework"
-    ],
-    "type": "library",
+    "keywords": ["php", "cli", "simple", "framework", "lightweight"],
+    "type": "project",
     "license": "MIT",
-    "homepage": "https://gitlab.com/eneioarzew/egg-stack.git",
+    "homepage": "https://github.com/eneioarzew/egg-stack.git",
     "authors": [
         {
             "name": "Julac Ontina",
             "email": "julac.ontina@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "beta-1.0",
     "require": {
         "php": ">=7.1.0"
     }
