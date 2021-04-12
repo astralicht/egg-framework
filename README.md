@@ -1,5 +1,5 @@
 
-# Egg Stack
+# Egg Framework
 *A lightweight PHP framework for quick project creation.*
 *by Julac Ontina*
 
