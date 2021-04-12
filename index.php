@@ -49,6 +49,7 @@ else if($ENVIRONMENT === "PRODUCTION") {
 }
 
 function showErrorPage() {
-	include_once Error404Controller::index();
+	$controller = new Error404Controller();
+	include_once $controller->index();
 	die;
 }
