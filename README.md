@@ -5,11 +5,12 @@
 
 # Installation
 **Install using Composer**
-```composer create-project eneioarzew/egg-framework:[version|leave blank to default to latest stable version] [folder-name to install the framework to]```
+* ```composer create-project eneioarzew/egg-framework:[version|leave blank to default to latest stable version] [folder-name to install the framework to]```
 **Alternatives**
-- Check releases on the Github page and select a version to download.
+* Check releases on the Github page and select a version to download.
 
 **Commands available:** *(Every command must be preceeded by "php chalaza")*
+
 **Generate single** *Generate commands can be shortened to g:[module-type]*
 * **generate:controller** *[controller-name]*
 	* Generates a controller in php/controllers, a view in resources/view, reference lines in the config file, and routes.
