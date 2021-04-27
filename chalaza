@@ -37,17 +37,17 @@ class $controllerClassName" . "Controller {
 		$view = fopen("modules/" . $viewFolderName . "/index.html", "w");
 		$viewContents = "<!DOCTYPE html>
 <html lang='en'>
-	<head>
-		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-		<title> $controllerName Index </title>
-		<link rel="icon" href="../favicon.ico">
-		<link rel=\"stylesheet\" href=\"../modules/global.css\">
-		<link rel=\"stylesheet\" href=\"../modules/" . $viewFolderName . "/index.css\">
-	</head>
+<head>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	<title> $controllerName Index </title>
+	<link rel='icon' href='../favicon.ico'>
+	<link rel='stylesheet' href='../modules/global.css'>
+	<link rel='stylesheet' href='../modules/" . $viewFolderName . "/index.css'>
+</head>
 <body>
 	<h1> $controllerName Index </h1>
 
-	<script src=\"../modules/" . $viewFolderName . "/index.js\"></script>
+	<script src='../modules/" . $viewFolderName . "/index.js'></script>
 </body>
 </html>
 ";
