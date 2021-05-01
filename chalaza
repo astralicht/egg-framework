@@ -3,28 +3,28 @@
 /* Turn line below into a comment to enable PHP error reporting. */
 error_reporting(0);
 
-function generateController($argv)
-{
-	if (empty($argv[2]) === true) {
+function generateController($argv) {
+	if(empty($argv[2]) === true) {
 		echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> Provide new controller with name.";
-	} else {
+	}
+	else {
 		$controllerName = $argv[2];
 		$controllerClassName = $controllerName;
 		$controllerClassName[0] = strtoupper($controllerClassName[0]);
 
-		if (filesize("php/controllers/" . $controllerName . "Controller.php") != 0) {
-			echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> Controller '" . $controllerClassName . "' already exists.";
+		if(filesize("php/controllers/".$controllerName."Controller.php") != 0) {
+			echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> Controller '".$controllerClassName."' already exists.";
 			die;
 		}
 
-		$controller = fopen("php/controllers/" . $controllerName . "Controller.php", "w");
+		$controller = fopen("php/controllers/".$controllerName."Controller.php", "w");
 		$controllerContents = "<?php
 
-class $controllerClassName" . "Controller {
+class $controllerClassName"."Controller {
 
 	public function index() {
-		" . '$controller' . " = new Controller();
-		return " . '$controller' . "->view('$controllerName/index');
+		".'$controller'." = new Controller();
+		return ".'$controller'."->view('$controllerName/index');
 	}
 
 }
@@ -33,56 +33,55 @@ class $controllerClassName" . "Controller {
 		fclose($controller);
 
 		$viewFolderName = $argv[2];
-		mkdir("modules/" . $viewFolderName);
-		$view = fopen("modules/" . $viewFolderName . "/index.html", "w");
+		mkdir("modules/".$viewFolderName);
+		$view = fopen("modules/".$viewFolderName."/index.html", "w");
 		$viewContents = "<!DOCTYPE html>
 <html lang='en'>
 <head>
-	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
 	<title> $controllerName Index </title>
-	<link rel='icon' href='../favicon.ico'>
-	<link rel='stylesheet' href='../modules/global.css'>
-	<link rel='stylesheet' href='../modules/" . $viewFolderName . "/index.css'>
+	<link rel=\"icon\" href=\"../favicon.ico\">
+	<link rel=\"stylesheet\" href=\"../modules/global.css\">
+	<link rel=\"stylesheet\" href=\"../modules/".$viewFolderName."/index.css\">
 </head>
 <body>
 	<h1> $controllerName Index </h1>
 
-	<script src='../modules/" . $viewFolderName . "/index.js'></script>
+	<script src=\"../modules/".$viewFolderName."/index.js\"></script>
 </body>
 </html>
 ";
 		fwrite($view, $viewContents);
 		fclose($view);
 
-		$view = fopen("modules/" . $viewFolderName . "/index.css", "w");
+		$view = fopen("modules/".$viewFolderName."/index.css", "w");
 		fwrite($view, "/* Enter css here");
 		fclose($view);
 
-		$view = fopen("modules/" . $viewFolderName . "/index.js", "w");
+		$view = fopen("modules/".$viewFolderName."/index.js", "w");
 		fwrite($view, "// Enter js here");
 		fclose($view);
 
 		$file = fopen("routes.php", "a");
-		fwrite($file, "\n" . '$ROUTE["' . $viewFolderName . '/index"] = "' . $viewFolderName . '/index";');
+		fwrite($file, "\n".'$ROUTE["'.$viewFolderName.'/index"] = "'.$viewFolderName.'/index";');
 		fclose($file);
 
 		$file = fopen("config.php", "a");
-		fwrite($file, "\ninclude_once 'php/controllers/" . $controllerName . "Controller.php';");
+		fwrite($file, "\ninclude_once 'php/controllers/".$controllerName."Controller.php';");
 		fclose($file);
 
 		echo "\n\033[33m Chalaza \033[0m\033[1;32m Success\033[0m >> Created $controllerClassName controller, view, and route.";
 	}
 }
 
-function generateService($argv)
-{
-	if (empty($argv[2]) !== true) {
-		$file_path = "php/services/" . $argv[2] . "Service.php";
+function generateService($argv) {
+	if(empty($argv[2]) !== true) {
+		$file_path = "php/services/".$argv[2]."Service.php";
 		$serviceName = $argv[2];
 		$serviceName[0] = strtoupper($serviceName[0]);
 		$serviceContents = "<?php
 
-class $serviceName" . "Service {
+class $serviceName"."Service {
 
 	// insert code here
 
@@ -95,27 +94,27 @@ class $serviceName" . "Service {
 		$serviceName[0] = strtolower($serviceName[0]);
 
 		$file = fopen("config.php", "a");
-		fwrite($file, "\ninclude_once 'php/services/" . $serviceName . "Service.php';");
+		fwrite($file, "\ninclude_once 'php/services/".$serviceName."Service.php';");
 		fclose($file);
 
 		$serviceName[0] = strtoupper($serviceName[0]);
 
 		echo "\n\033[33m Chalaza \033[0m\033[1;32m Success\033[0m >> Created $serviceName service.";
-	} else {
+	}
+	else {
 		echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> Service name argument is blank.";
 	}
 }
 
-function generateRepository($argv)
-{
-	if (empty($argv[2]) !== true) {
-		$file_path = "php/repositories/" . $argv[2] . "Repository.php";
+function generateRepository($argv) {
+	if(empty($argv[2]) !== true) {
+		$file_path = "php/repositories/".$argv[2]."Repository.php";
 		$repositoryName = $argv[2];
 		$repositoryClassName = $repositoryName;
 		$repositoryClassName[0] = strtoupper($repositoryClassName[0]);
 		$repositoryContent = "<?php
 
-class $repositoryClassName" . "Repository {
+class $repositoryClassName"."Repository {
 
 	// insert code here
 
@@ -126,25 +125,25 @@ class $repositoryClassName" . "Repository {
 		fclose($file);
 
 		$file = fopen("config.php", "a");
-		fwrite($file, "\ninclude_once 'php/repositories/" . $repositoryName . "Repository.php';");
+		fwrite($file, "\ninclude_once 'php/repositories/".$repositoryName."Repository.php';");
 		fclose($file);
 
 		echo "\n\033[33m Chalaza \033[0m\033[1;32m Success\033[0m >> Created $repositoryClassName repository.";
-	} else {
+	}
+	else {
 		echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> Repository name argument is blank.";
 	}
 }
 
-function generateDomain($argv)
-{
-	if (empty($argv[2]) !== true) {
-		$file_path = "php/domains/" . $argv[2] . "Domain.php";
+function generateDomain($argv) {
+	if(empty($argv[2]) !== true) {
+		$file_path = "php/domains/".$argv[2]."Domain.php";
 		$domainName = $argv[2];
 		$domainClassName = $domainName;
 		$domainClassName[0] = strtoupper($domainClassName[0]);
 		$domainContent = "<?php
 
-class $domainClassName" . "Domain {
+class $domainClassName"."Domain {
 
 	// insert code here
 
@@ -155,73 +154,76 @@ class $domainClassName" . "Domain {
 		fclose($file);
 
 		$file = fopen("config.php", "a");
-		fwrite($file, "\ninclude_once 'php/domains/" . $domainName . "Domain.php';");
+		fwrite($file, "\ninclude_once 'php/domains/".$domainName."Domain.php';");
 		fclose($file);
 
 		echo "\n\033[33m Chalaza \033[0m\033[1;32m Success\033[0m >> Created $domainClassName domain.";
-	} else {
+	}
+	else {
 		echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> Domain name argument is blank.";
 	}
 }
 
-function generateFunction($argv)
-{
-	if (empty($argv[2]) !== true) {
-		if (empty($argv[3]) === true) {
+function generateFunction($argv) {
+	if(empty($argv[2]) !== true) {
+		if(empty($argv[3]) === true) {
 			echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> Function name is blank.";
 			die;
 		}
 
-		$file_path = "php/controllers/" . $argv[2] . "Controller.php";
+		$file_path = "php/controllers/".$argv[2]."Controller.php";
 
-		if (file_exists($file_path)) {
+		if(file_exists($file_path)) {
 			$file = fopen($file_path, "r+");
-		} else {
-			echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> " . $argv[2] . "Controller does not exist.";
+		}
+		else {
+			echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> ".$argv[2]."Controller does not exist.";
 			die;
 		}
 
 		fseek($file, -1, SEEK_END);
-		fwrite($file, "\tpublic function " . $argv[3] . "(");
-		for ($i = 4; $i < count($argv); $i++) {
-			if ($i < count($argv) - 1) {
-				fwrite($file, "$" . $argv[$i] . ", ");
-			} else {
-				fwrite($file, "$" . $argv[$i]);
+		fwrite($file, "\tpublic function ".$argv[3]."(");
+		for($i=4; $i < count($argv); $i++) {
+			if($i < count($argv)-1) {
+				fwrite($file, "$".$argv[$i].", ");
+			}
+			else {
+				fwrite($file, "$".$argv[$i]);
 			}
 		}
 		fwrite($file, ") {\n\t\t/* Insert function code here */\n\t}\n\n}");
 		fseek($file, 0, SEEK_END);
 		fclose($file);
-	} else {
+	}
+	else {
 		echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> Controller name argument is blank.";
 		die;
 	}
 }
 
-function generateRoute($argv)
-{
-	if (empty($argv[2]) !== true) {
-		if (empty($argv[3]) !== true) {
+function generateRoute($argv) {
+	if(empty($argv[2]) !== true) {
+		if(empty($argv[3]) !== true) {
 			$file = fopen("routes.php", "a");
-			fwrite($file, "\n" . '$ROUTE["' . $argv[2] . '/' . $argv[3] . '"] = "' . $argv[2] . '/' . $argv[3] . '";');
+			fwrite($file, "\n".'$ROUTE["'.$argv[2].'/'.$argv[3].'"] = "'.$argv[2].'/'.$argv[3].'";');
 			fclose($file);
-			echo "\n\033[33m Chalaza \033[0m\033[1;32m Success\033[0m >> Created route " . $argv[2] . "/" . $argv[3] . ".";
-		} else {
+			echo "\n\033[33m Chalaza \033[0m\033[1;32m Success\033[0m >> Created route ".$argv[2]."/".$argv[3].".";
+		}
+		else {
 			echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> Route function name is blank.";
 		}
-	} else {
+	}
+	else {
 		echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> Route controller name is blank.";
 	}
 }
 
-function generateMultiple($argv, $module_types)
-{
+function generateMultiple($argv, $module_types) {
 	strtolower($module_types);
 	$module_types = str_split($module_types, 1);
 
 	for ($i = 0; $i < count($module_types); $i++) {
-		switch ($module_types[$i]) {
+		switch($module_types[$i]) {
 			case "c":
 				generateController($argv);
 				break;
@@ -235,7 +237,7 @@ function generateMultiple($argv, $module_types)
 				generateService($argv);
 				break;
 			default:
-				echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> Module type '" . $module_types[$i] . "' is not available.";
+				echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> Module type '".$module_types[$i]."' is not available.";
 				break;
 		}
 	}
@@ -244,14 +246,14 @@ function generateMultiple($argv, $module_types)
 
 /** Main Function */
 
-if (isset($argv[1])) {
+if(isset($argv[1])) {
 	$args = explode(":", $argv[1]);
 	$module_types = strtolower($args[1]);
 
-	switch ($args[0]) {
+	switch($args[0]) {
 		case "g":
 		case "generate":
-			switch ($args[1]) {
+			switch($args[1]) {
 				case "c":
 				case "controller":
 					generateController($argv);
@@ -278,6 +280,7 @@ if (isset($argv[1])) {
 				default:
 					echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> Invalid argument entered. Unknown argument or not included.\n\n";
 					break;
+				
 			}
 			break;
 		case "gm":
@@ -288,7 +291,8 @@ if (isset($argv[1])) {
 			echo "\n\033[33m Chalaza \033[0m\033[0;31m Error\033[0m >> Invalid argument entered.\n\n";
 			break;
 	}
-} else {
-	echo "\n\033[33m Chalaza \033[0m v1.0.2";
+}
+else{
+	echo "\n\033[33m Chalaza \033[0m v1.0";
 	echo "\nby Julac Ontina\n\n";
 }
