@@ -1,3 +1,8 @@
+Options +FollowSymLinks
 RewriteEngine on
+
 RewriteRule ^([0-9a-z]+)$ index.php/$1
 RewriteRule ^([0-9a-z]+)/([0-9a-z]+)$ index.php/$1/$2
+RewriteRule ^([0-9a-z]+)/([0-9a-z]+)/([0-9a-z]+)$ index.php/$1/$2/$3
+RewriteRule ^([0-9a-z]+)/([0-9a-z]+)/([0-9a-z]+)/([0-9a-z]+)$ index.php/error404/index
+RewriteRule ^([0-9a-z]+)/([0-9a-z]+)/([0-9a-z]+)/([0-9a-z]+)/([0-9a-z]+)$ index.php/error404/index
