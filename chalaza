@@ -63,6 +63,7 @@ class $controllerClassName"."Controller {
 		fclose($view);
 
 		$file = fopen("routes.php", "a");
+		fwrite($file, "\n".'$ROUTE["'.$viewFolderName.'"] = "'.$viewFolderName.'/index";');
 		fwrite($file, "\n".'$ROUTE["'.$viewFolderName.'/index"] = "'.$viewFolderName.'/index";');
 		fclose($file);
 
