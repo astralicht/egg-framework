@@ -16,7 +16,7 @@ function showErrorPage()
 $original_URI = $_SERVER['REQUEST_URI'];
 $exploded_URI = explode("/", $original_URI);
 $json_string = file_get_contents("php://input");
-$URI_offset = ['LOCAL' => 1, 'PRODUCTION' => 2];
+$URI_offset = ['LOCAL' => 2, 'PRODUCTION' => 1];
 $offset = $URI_offset[$ENVIRONMENT];
 
 foreach (range(0, $offset - 1) as $i) {
