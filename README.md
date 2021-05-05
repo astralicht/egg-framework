@@ -1,6 +1,6 @@
 
 # Egg Framework
-*A lightweight PHP framework for quick project creations*
+*A lightweight PHP framework for quick project creation.*
 
 # Installation
 **Install using Composer**
