@@ -1,6 +1,6 @@
 
 # Egg Framework
-*A lightweight PHP framework for quick project creation by Julac Ontina.*
+*A lightweight PHP framework for quick project creation.*
 
 # Installation
 **Install using Composer**

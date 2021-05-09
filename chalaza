@@ -63,6 +63,7 @@ class $controllerClassName"."Controller {
 		fclose($view);
 
 		$file = fopen("routes.php", "a");
+		fwrite($file, "\n".'$ROUTE["'.$viewFolderName.'"] = "'.$viewFolderName.'/index";');
 		fwrite($file, "\n".'$ROUTE["'.$viewFolderName.'/index"] = "'.$viewFolderName.'/index";');
 		fclose($file);
 
@@ -293,6 +294,6 @@ if(isset($argv[1])) {
 	}
 }
 else{
-	echo "\n\033[33m Chalaza \033[0m v1.0";
-	echo "\nby Julac Ontina\n\n";
+	echo "\n\033[33m Chalaza";
+	echo "\n\033[0m by EneioArzew\n\n";
 }
