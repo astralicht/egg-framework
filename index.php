@@ -10,7 +10,6 @@ function showErrorPage()
 {
 	$instance = new Error404Controller();
 	include_once $instance->index();
-	die;
 }
 
 $original_URI = $_SERVER['REQUEST_URI'];
@@ -46,20 +45,29 @@ if ($URI_length === 0) {
 		$function = $URI_route[1];
 		$data = $exploded_URI[2];
 
+		if (!$exploded_URI[1]) {
+			header("Location: $controller/$function");
+		}
+
 		$controller[0] = strtoupper($controller[0]);
 		$controller .= "Controller";
 		$instance = new $controller();
 
 		if ($obj) {
 			$response = $instance->$function($obj);
-			echo json_encode($response);
+			if ($response !== null) {
+				echo json_encode($response);
+			} else if ($response === null) {
+				echo json_encode(["body" => null]);
+			}
 		} else {
 			$response = $instance->$function($data);
+			if ($response !== null) {
+				include_once $response;
+			} else if ($response === null) {
+				showErrorPage();
+			}
 		}
-	}
-
-	if ($response !== null) {
-		include_once $response;
 	} else {
 		showErrorPage();
 	}
